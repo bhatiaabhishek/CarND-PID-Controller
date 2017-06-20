@@ -8,7 +8,7 @@ Self-Driving Car Engineer Nanodegree Program
 A PID controller is a feedback control loop controller which calculates continuous error from the desired output, and tries to minimize this error using "Proportional, Integral and Differential" corrections.
 
 * The proportional (Kp) term acts on the current error, i.e. the larger the error, the more the control output.
-* Integral term (Ki) acts on the past values of error and helps offset bias. This is useful for example if a zero steering angle does not correspond to a straight trajectory.
+* Integral term (Ki) acts on the past values of error and helps offset bias. This is useful, for example, if a zero steering angle does not correspond to a straight trajectory.
 * Differential term (Kd) acts on the current rate of change of the error. It helps mitigate overshoot and oscillations. On experimenting with hand-tuning, I found out that if this term is too small, the car oscillates on the track and eventually crashes.
 
 ## Tuning hyperparamters
