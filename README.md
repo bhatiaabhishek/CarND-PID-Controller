@@ -17,7 +17,7 @@ I used twiddle algorithm to converge to the paramters in main.cpp. To tune, just
 
 ## Smoothen steering angles
 
-I noticed that the PID controller results in a jerky motion due to abrupt steering. To mitigate this I take a rolling average of 10 previous steering angles including the current angle. This results in a much smooth trajectory. Averaging over too large of a window reduces reactivity and can be counter-productive.
+I noticed that the PID controller results in a jerky motion due to abrupt steering. To mitigate this I take a rolling average of 10 previous steering angles including the current angle. This results in a smoother trajectory. Averaging over too large of a window reduces reactivity and can be counter-productive.
 
 ## Linear control of target speed
 
