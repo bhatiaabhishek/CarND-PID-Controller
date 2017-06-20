@@ -8,13 +8,23 @@ Self-Driving Car Engineer Nanodegree Program
 A PID controller is a feedback control loop controller which calculates continuous error from the desired output, and tries to minimize this error using "Proportional, Integral and Differential" corrections.
 
 * The proportional (Kp) term acts on the current error, i.e. the larger the error, the more the control output.
-* Integral term (Ki) acts on the past values of error and helps offset bias.
+* Integral term (Ki) acts on the past values of error and helps offset bias. This is useful for example if a zero steering angle does not correspond to a straight trajectory.
 * Differential term (Kd) acts on the current rate of change of the error. It helps mitigate overshoot and oscillations. On experimenting with hand-tuning, I found out that if this term is too small, the car oscillates on the track and eventually crashes.
 
 ## Tuning hyperparamters
 
 I used twiddle algorithm to converge to the paramters in main.cpp. To tune, just set tune_param in Init() to "true". In twiddle mode, the controller runs 800 iterations and resets the simulator each time, to tune the parameters. Once it reaches a tolerance level, the simulator automatically stops tuning further. 
 
+## Smoothen steering angles
+
+I noticed that the PID controller results in a jerky motion due to abrupt steering. To mitigate this I take a rolling average of 10 previous steering angles including the current angle. This results in a much smooth trajectory. Averaging over too large of a window reduces reactivity and can be counter-productive.
+
+## Linear control of target speed
+
+When a car is turning, it should ideally reduce speed for passenger comfort and also to reduce CTE. To achieve this I chage the target speed proportionally to the steering angle
+  -- TargetSpeed = 80*(1-abs(angle)) + 20
+  
+I vary the throttle dynamically based on the target and the current speed. This ensures that during turns, the car slows down and does not overshoot.
 
 ## Dependencies
 
