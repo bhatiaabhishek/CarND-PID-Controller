@@ -22,7 +22,7 @@ I noticed that the PID controller results in a jerky motion due to abrupt steeri
 ## Linear control of target speed
 
 When a car is turning, it should ideally reduce speed for passenger comfort and also to reduce CTE. To achieve this I change the target speed proportionally to the steering angle
-  -- TargetSpeed = 80*(1-abs(angle)) + 20
+    *TargetSpeed = 80*(1-abs(angle)) + 20
   
 I vary the throttle dynamically based on the target and the current speed. This ensures that during turns, the car slows down and does not overshoot.
 
